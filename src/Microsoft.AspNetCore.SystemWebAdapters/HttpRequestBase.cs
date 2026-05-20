@@ -102,6 +102,8 @@ namespace System.Web
 
         public virtual void Abort() => throw new NotImplementedException();
 
+        public virtual HttpClientCertificateBase ClientCertificate => throw new NotImplementedException();
+
         [return: NotNullIfNotNull(nameof(request))]
         public static implicit operator HttpRequestBase?(HttpRequestCore? request) => request?.HttpContext.AsSystemWebBase().Request;
     }

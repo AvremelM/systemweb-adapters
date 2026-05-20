@@ -34,6 +34,7 @@ namespace System.Web
         private HttpCookieCollection? _cookies;
         private NameValueCollection? _params;
         private HttpBrowserCapabilities? _browser;
+        private HttpClientCertificate? _clientCertificate;
 
         internal HttpRequest(HttpRequestCore request)
         {
@@ -217,6 +218,8 @@ namespace System.Web
         public string? this[string key] => Params[key];
 
         public NameValueCollection Params => _params ??= new ParamsCollection(Request);
+
+        public HttpClientCertificate ClientCertificate => _clientCertificate ??= new(Request.HttpContext.Connection.ClientCertificate);
 
         public byte[] BinaryRead(int count)
         {

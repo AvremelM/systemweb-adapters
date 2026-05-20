@@ -103,6 +103,8 @@ namespace System.Web
 
         public override ReadEntityBodyMode ReadEntityBodyMode => _request.ReadEntityBodyMode;
 
+        public override HttpClientCertificateBase ClientCertificate => new HttpClientCertificateWrapper(_request.ClientCertificate);
+
         public override void SaveAs(string filename, bool includeHeaders) => _request.SaveAs(filename, includeHeaders);
 
         public override string? this[string key] => _request[key];
